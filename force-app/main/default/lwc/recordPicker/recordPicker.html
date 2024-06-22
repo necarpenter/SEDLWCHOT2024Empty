@@ -1,0 +1,40 @@
+<template>
+    <div class="slds-form-element slds-p-around_medium" style="background-color: white">
+        <label class="slds-form-element__label" for="combobox-id-2" id="combobox-label-id-130">
+            <abbr if:true={required} class="slds-required" title="required">* </abbr>
+            Record Picker
+        </label>
+
+        <div class="slds-form-element__control">
+            <div class="slds-combobox_container">
+                <div class={classes}>
+                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right ">
+                                <lightning-input type="text" label="Search Records" onchange={handleSearch}
+                                    value={searchValue}></lightning-input>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div lwc:if={filteredRecords} id="listbox-id-4"
+                        class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" role="listbox">
+                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                            <template for:each={filteredRecords} for:item="record">
+                                <li key={record.Id} role="presentation" class="slds-listbox__item">
+                                    <div onclick={handleSelect} data-id={record.Id} role="record">
+                                        <span class="slds-media__figure slds-listbox__option-icon"></span>
+                                        <span class="slds-media__body">
+                                            <span class="slds-truncate" title={record.label}>{record.label}</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>

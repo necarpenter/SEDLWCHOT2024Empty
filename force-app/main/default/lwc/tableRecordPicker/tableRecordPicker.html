@@ -1,0 +1,18 @@
+<template>
+    <div style="background-color:white" class="slds-p-around_medium">
+        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+            <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right ">
+                    <lightning-input type="text" label="Search Records" onchange={handleSearch}
+                        value={searchValue}></lightning-input>
+                </div>
+            </div>
+
+        </div>
+
+        <lightning-datatable lwc:if={filteredRecords} 
+        onrowaction={handleSelect} hide-checkbox-column key-field="Id" data={filteredRecords} columns={fullColumns}>
+        </lightning-datatable>
+    </div>
+
+</template>
